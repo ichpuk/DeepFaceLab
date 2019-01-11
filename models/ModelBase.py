@@ -8,6 +8,7 @@ from utils import Path_utils
 from utils import std_utils
 from utils import image_utils
 from utils.console_utils import *
+from utils.gdrive_sync import GoogleDriveSync
 import numpy as np
 import cv2
 from samples import SampleGeneratorBase
@@ -94,6 +95,8 @@ class ModelBase(object):
             self.options['src_scale_mod'] = np.clip( input_int("Src face scale modifier % ( -30...30, ?:help skip:0) : ", 0, help_message="If src face shape is wider than dst, try to decrease this value to get a better result."), -30, 30)
         else:            
             self.options['src_scale_mod'] = self.options.get('src_scale_mod', 0)
+
+        self.drive = GoogleDriveSync(model=self.model_path, key=input_str("Google Drive OAuth key (default: None) : ", None))
              
         self.write_preview_history = self.options['write_preview_history']
         if not self.options['write_preview_history']:
@@ -288,6 +291,9 @@ class ModelBase(object):
                 target_filename.unlink()
                 
             source_filename.rename ( str(target_filename) )
+
+        print("Uploading models to Google Drive...")
+        self.drive.uploadThread()
         
     def debug_one_epoch(self):
         images = []

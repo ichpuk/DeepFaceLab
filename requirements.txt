@@ -1,0 +1,6 @@
+scandir==1.6
+h5py==2.7.1
+Keras==2.2.4
+opencv-python==3.4.0.12
+scikit-image
+git+https://www.github.com/keras-team/keras-contrib.git

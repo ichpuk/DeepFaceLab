@@ -276,10 +276,10 @@ class SAEModel(ModelBase):
 
     #override
     def onGetPreview(self, sample):
-        test_A   = sample[0][1][0:4] #first 4 samples
-        test_A_m = sample[0][2][0:4] #first 4 samples
-        test_B   = sample[1][1][0:4]
-        test_B_m = sample[1][2][0:4]
+        test_A   = sample[0][1][0:10] #first 10 samples
+        test_A_m = sample[0][2][0:10] #first 10 samples
+        test_B   = sample[1][1][0:10]
+        test_B_m = sample[1][2][0:10]
         
         S = test_A
         D = test_B
