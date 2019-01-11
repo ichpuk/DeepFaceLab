@@ -4,3 +4,4 @@ Keras==2.2.4
 opencv-python==3.4.0.12
 scikit-image
 git+https://www.github.com/keras-team/keras-contrib.git
+pydrive

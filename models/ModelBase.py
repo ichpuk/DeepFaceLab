@@ -96,7 +96,7 @@ class ModelBase(object):
         else:            
             self.options['src_scale_mod'] = self.options.get('src_scale_mod', 0)
 
-        self.drive = GoogleDriveSync(model=self.model_path, key=input_str("Google Drive OAuth key (default: None) : ", None))
+        self.drive = GoogleDriveSync(model_dir=self.model_path, key=input_str("Google Drive OAuth key (default: None) : ", None))
              
         self.write_preview_history = self.options['write_preview_history']
         if not self.options['write_preview_history']:
