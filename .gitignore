@@ -3,6 +3,7 @@
 !*.md
 !*.txt
 !*.jpg
+!client_secrets.json
 !requirements*
 !doc
 !facelib
@@ -13,6 +14,3 @@
 !models
 !nnlib
 !utils
-!extra
-!Dockerfile*
-!*.sh
