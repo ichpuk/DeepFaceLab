@@ -252,8 +252,8 @@ def previewThread (input_queue, output_queue):
                 
             final = np.concatenate ( [final, selected_preview_rgb], axis=0 )
             
-            cv2.imshow ( 'Training preview', final)
-            is_showing = True
+            cv2.imwrite ( 'preview.png', final )
+            is_showing = False
         
         if is_showing:
             key = cv2.waitKey(100)
