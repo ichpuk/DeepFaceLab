@@ -258,8 +258,8 @@ def previewThread (input_queue, output_queue):
         if is_showing:
             key = cv2.waitKey(100)
         else:
-            time.sleep(0.1)
-            key = 0
+            time.sleep(60)
+            key = ord("p")
 
         if key == ord('\n') or key == ord('\r'):
             output_queue.put ( {'op': 'close'} )
