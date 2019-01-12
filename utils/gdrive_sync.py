@@ -41,8 +41,7 @@ class GoogleDriveSync:
                         file = self.drive.CreateFile({"id": gd_file["id"]})
 
                 if "file" not in locals():
-                    if h5file.endswith(".json") or h5file.endswith(".h5"):
-                        file = self.drive.CreateFile({"title": h5file})
+                    file = self.drive.CreateFile({"title": h5file})
 
                 if "file" in locals():
                     file.SetContentFile("{}/{}".format(self.model_dir, h5file))
