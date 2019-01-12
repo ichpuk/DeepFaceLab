@@ -1,5 +1,5 @@
 import threading
-from os import listdir
+import os
 
 from pydrive.auth import GoogleAuth
 from pydrive.drive import GoogleDrive
@@ -35,13 +35,14 @@ class GoogleDriveSync:
             file_list = self.drive.ListFile(
                 {'q': "'root' in parents and trashed=false"}).GetList()
 
-            for h5file in tqdm(listdir(self.model_dir)):
+            for h5file in tqdm(os.listdir(self.model_dir)):
                 for gd_file in file_list:
                     if h5file == gd_file["title"]:
                         file = self.drive.CreateFile({"id": gd_file["id"]})
 
                 if "file" not in locals():
-                    file = self.drive.CreateFile({"title": h5file})
+                    if os.path.isfile(h5file):
+                        file = self.drive.CreateFile({"title": h5file})
 
                 if "file" in locals():
                     file.SetContentFile("{}/{}".format(self.model_dir, h5file))
