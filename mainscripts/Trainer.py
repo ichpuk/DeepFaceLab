@@ -250,17 +250,14 @@ def previewThread (input_queue, output_queue):
                 
                 final = np.concatenate ( [final, lh_img], axis=0 )
                 
-            final = np.concatenate ( [final, selected_preview_rgb], axis=0 )
-            
-            print(final)
-            cv2.imwrite ( 'preview.png', final )
+            cv2.imwrite ( 'preview.png', np.concatenate ( [final, selected_preview_rgb], axis=0 ) )
             is_showing = False
         
         if is_showing:
             key = cv2.waitKey(100)
         else:
-            time.sleep(60)
-            key = ord("p")
+            time.sleep(0.1)
+            key = 100
 
         if key == ord('\n') or key == ord('\r'):
             output_queue.put ( {'op': 'close'} )
