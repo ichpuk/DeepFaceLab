@@ -252,6 +252,7 @@ def previewThread (input_queue, output_queue):
                 
             final = np.concatenate ( [final, selected_preview_rgb], axis=0 )
             
+            print(final)
             cv2.imwrite ( 'preview.png', final )
             is_showing = False
         
