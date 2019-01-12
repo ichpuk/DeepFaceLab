@@ -5,6 +5,7 @@ import colorsys
 import time
 import numpy as np
 import itertools
+import pickle
 
 from pathlib import Path
 from utils import Path_utils
@@ -171,8 +172,6 @@ def previewThread (input_queue, output_queue):
             # HEAD
             head_text_color = [0.8]*c
             head_lines = [
-                '[s]:save [enter]:exit',
-                '[p]:update [space]:next preview',
                 'Preview: "%s" [%d/%d]' % (selected_preview_name,selected_preview+1, len(previews) )
                 ] 
             head_line_height = 15
@@ -250,7 +249,7 @@ def previewThread (input_queue, output_queue):
                 
                 final = np.concatenate ( [final, lh_img], axis=0 )
                 
-            cv2.imwrite ( 'preview.png', np.concatenate ( [final, selected_preview_rgb], axis=0 ) )
+            cv2.imwrite ( 'preview.png', np.concatenate ( [final, selected_preview_rgb], axis=0 ) * 255 )
             is_showing = False
         
         if is_showing:
