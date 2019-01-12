@@ -157,7 +157,7 @@ def previewThread (input_queue, output_queue):
                         if h != max_h or w != max_w:
                             previews.remove(preview)
                             previews.append ( (preview_name, cv2.resize(preview_rgb, (max_w, max_h))) )
-                    selected_preview = selected_preview % len(previews)
+                    selected_preview = len(previews) // 3
                     update_preview = True
             elif op == 'close':
                 break
@@ -174,7 +174,7 @@ def previewThread (input_queue, output_queue):
             head_lines = [
                 'Preview: "%s" [%d/%d]' % (selected_preview_name,selected_preview+1, len(previews) )
                 ] 
-            head_line_height = 15
+            head_line_height = 15 * 2
             head_height = len(head_lines) * head_line_height
             head = np.ones ( (head_height,w,c) ) * 0.1
               
@@ -189,7 +189,7 @@ def previewThread (input_queue, output_queue):
                 # LOSS HISTORY
                 loss_history = np.array (loss_history)
                 
-                lh_height = 100
+                lh_height = 100 * 2
                 lh_img = np.ones ( (lh_height,w,c) ) * 0.1
                 loss_count = len(loss_history[0])
                 lh_len = len(loss_history)
@@ -255,8 +255,8 @@ def previewThread (input_queue, output_queue):
         if is_showing:
             key = cv2.waitKey(100)
         else:
-            time.sleep(0.1)
-            key = 100
+            time.sleep(60)
+            key = ord('p')
 
         if key == ord('\n') or key == ord('\r'):
             output_queue.put ( {'op': 'close'} )
