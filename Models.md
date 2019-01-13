@@ -48,8 +48,6 @@ SAE model Cage-Trump video: https://www.youtube.com/watch?v=2R_aqHBClUQ
 
 SAE model Putin-Navalny video: https://www.youtube.com/watch?v=Jj7b3mqx-Mw
 
-![](https://github.com/iperov/DeepFaceLab/blob/master/doc/DeepFaceLab_convertor_overview.png)
-
 
 ### **Tips and tricks**:
 
