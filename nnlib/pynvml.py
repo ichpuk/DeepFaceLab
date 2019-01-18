@@ -26,8 +26,6 @@
 # THE POSSIBILITY OF SUCH DAMAGE.
 #####
 
-from pynvml import *
-"""
 ##
 # Python bindings for the NVML library
 ##
@@ -1716,4 +1714,3 @@ def nvmlDeviceGetCudaComputeCapability(device):
         raise NVMLError(ret)
 
     return c_major.value, c_minor.value
-"""
